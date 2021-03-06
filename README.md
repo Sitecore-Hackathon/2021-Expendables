@@ -21,7 +21,7 @@ Realtime Notifier uses SignalR to send push notifications to all active Sitecore
 		- Item Renamed
 		- Item Deleted
 
-   - User Activities 
+    - User Activities 
 		- Content Editor is being accessed
 
     - Publishing Activities
