@@ -9,31 +9,32 @@
 You can find a very good reference to Github flavoured markdown reference in [this cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). If you want something a bit more WYSIWYG for editing then could use [StackEdit](https://stackedit.io/app) which provides a more user friendly interface for generating the Markdown code. Those of you who are [VS Code fans](https://code.visualstudio.com/docs/languages/markdown#_markdown-preview) can edit/preview directly in that interface too.
 
 ## Team name
-⟹ Expendables
+Expendables
 
 ## Category
-⟹ The best enhancement to the Sitecore Admin (XP) for Content Editors & Marketers210.
+The best enhancement to the Sitecore Admin (XP) for Content Editors & Marketers210.
 
 ## Description
-⟹ Realtime Notifier uses SignalR to send push notifications to all active Sitecore "Content Editor" users to update them about the latest changes that other users might have done.  
+Realtime Notifier uses SignalR to send push notifications to all active Sitecore "Content Editor" users to update them about the latest changes that other users might have done.  
 
-  - Module Purpose: The purpose of this module to keep content author up to the date and informed about what is happening on the items.
-  - What problem was solved (if any): Currently content author doesn't get any real time notification about what is going on to the items and if there are some items that need their attention to either approve or reject those changes without going into Workbox.
-    - How does this module solve it: Content Author will get the real time notification in content editor itself where he spend most of the time and he can get all update on other items without moving aways from his its own content editor page. 
+  - What is SignalR: As per Wikipedia, SignalR is a free and open-source software library for Microsoft ASP.NET that allows server code to send asynchronous notifications to client-side web applications. The library includes server-side and client-side JavaScript components.
+  - The purpose of this module to keep content author up to the date and informed about what is happening on the items.
+  - Currently content author doesn't get any real time notification about what is going on to the items and if there are some items that need their attention to either approve or reject those changes without going into Workbox.
+    - Content Author will get the real time notification in content editor itself where he spend most of the time and he can get all update on other items without moving aways from his its own content editor page. 
 
-Here, as a part of this solution, we considered the following content author operations for processing the push notifications.
+  - Here, as a part of this solution, we considered the following content author operations for processing the push notifications. The notification will be shown to the Notification center and if the parent root is expanded, the item that was updated by another user will also have an indication in its Gutter area.
+    - Item Events 
+		- Item Saved
+		- Item Renamed
+		- Item Deleted
 
-Item Events
-Item Saved: The notification will be shown to the Notification center and if the parent root is expanded, the item that was updated by another user will also have an indication in its Gutter area.
-Item Renamed: 
-Item Deleted: 
+    - Publishing Events
+		- Publish End
 
-Workflow
-Item moved to a workflow stage
-Item approved for publishing
-Item rejected for publishing
-
-_You can alternately paste a [link here](#docs) to a document within this repo containing the description._
+    - Workflow Events
+		- Item Submit
+		- Item Approved
+		- Item Rejected
 
 ## Video link
 ⟹ Provide a video highlighing your Hackathon module submission and provide a link to the video. You can use any video hosting, file share or even upload the video to this repository. _Just remember to update the link below_
@@ -44,13 +45,11 @@ _You can alternately paste a [link here](#docs) to a document within this repo c
 
 ## Pre-requisites and Dependencies
 
-⟹ Does your module rely on other Sitecore modules or frameworks?
+- Sitecore 10.1
+- Microsoft .NET Framework 4.8
+- SignalR 2.4.1
 
-- List any dependencies
-- Or other modules that must be installed
-- Or services that must be enabled/configured
 
-_Remove this subsection if your entry does not have any prerequisites other than Sitecore_
 
 ## Installation instructions
 ⟹ Write a short clear step-wise instruction on how to install your module.  
