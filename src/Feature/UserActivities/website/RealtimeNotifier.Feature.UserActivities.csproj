@@ -101,8 +101,6 @@
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\UserActivityNotification.cs" />
-    <Compile Include="Pipelines\RenderContentEditor\ContentEditorOpened.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

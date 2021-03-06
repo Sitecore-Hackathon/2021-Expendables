@@ -12,18 +12,25 @@ namespace RealtimeNotifier.Feature.WorkBoxActivities.Workflow.Action
     {
         public void Process(WorkflowPipelineArgs args)
         {
-            Item dataItem = args.DataItem;
-            var signalService = ServiceLocator.ServiceProvider.GetService(typeof(ISignalRService)) as ISignalRService;
-            if (signalService != null)
-                signalService.WorkboxSignal(
-                    new SubmitActivityNotification()
-                    {
-                        Message = $"submitted the item {dataItem.Paths.FullPath} in Workflow.",
-                        UserName = Sitecore.Context.User.Profile.UserName,
-                        UserFullName = Sitecore.Context.User.Profile.FullName,
-                        NotificationType = NotificationType.WorkflowSaved,
-                        DateTime = DateTime.Now.ToString()
-                    });
+            try
+            {
+                Item dataItem = args.DataItem;
+                var signalService = ServiceLocator.ServiceProvider.GetService(typeof(ISignalRService)) as ISignalRService;
+                if (signalService != null)
+                    signalService.WorkboxSignal(
+                        new SubmitActivityNotification()
+                        {
+                            Message = $"Submitted the item {dataItem.Name} in Workflow.",
+                            UserName = Sitecore.Context.User.Profile.UserName,
+                            UserFullName = Sitecore.Context.User.Profile.FullName,
+                            NotificationType = NotificationType.WorkflowSaved,
+                            DateTime = DateTime.Now.ToString()
+                        });
+            }
+            catch (Exception ex)
+            {
+                Sitecore.Diagnostics.Log.Error($"{this} {ex.Message}", ex, this);
+            }
         }
     }
 }

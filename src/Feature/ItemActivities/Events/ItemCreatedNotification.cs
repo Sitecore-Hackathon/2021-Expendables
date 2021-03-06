@@ -3,10 +3,8 @@ using RealtimeNotifier.Foundation.SignalR.Services;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.Events;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System;
 
 namespace RealtimeNotifier.Feature.ItemActivities.Events
 {
@@ -20,22 +18,36 @@ namespace RealtimeNotifier.Feature.ItemActivities.Events
 
         protected void OnItemSaved(object sender, EventArgs args)
         {
-            Sitecore.Data.Items.Item item = Event.ExtractParameter<Sitecore.Data.Items.Item>(args, 0);
-            var itemChanges = Event.ExtractParameter<Sitecore.Data.Items.ItemChanges>(args, 1);
-            var hasWorkFlowField = itemChanges.FieldChanges.Cast<FieldChange>().Any(f => f.FieldID == Sitecore.FieldIDs.Workflow);
-            if (item.Paths.FullPath.ToLowerInvariant().StartsWith("/sitecore/content") && signalRService != null && item.Statistics.Created == item.Statistics.Updated && !hasWorkFlowField)
+            try
             {
-                signalRService.ItemActivitySignal(new ItemModel()
+                //Taking the item from Arguments
+                Item item = Event.ExtractParameter<Item>(args, 0);
+                if (item.Database.Name.ToLowerInvariant().Equals("web"))
                 {
-                    ItemName = item.Name,
-                    ItemID = item.ID.Guid.ToString("N"),
-                    UserName = item.Statistics.UpdatedBy,
-                    UserFullName = Sitecore.Context.User.Profile.FullName,
-                    ItemPath = item.Paths.FullPath,
-                    Message = $"{item.Name} has been created.",
-                    DateTime = DateTime.Now.ToString()
-                });
-                Log.Info($"ItemCreatedNotification.OnItemSaved: Triggered realtime notification for {item.ID}", this);
+                    return;
+                }
+                var itemChanges = Event.ExtractParameter<ItemChanges>(args, 1);
+                //Boolean created to avoid Item Save Notification when the Item is Created and Workflow is assigned while creation
+                var hasWorkFlowField = itemChanges.FieldChanges.Cast<FieldChange>().Any(f => f.FieldID == Sitecore.FieldIDs.Workflow);
+                //When Created and Updated date are same, means the Item got created!
+                if (item.Paths.FullPath.ToLowerInvariant().StartsWith("/sitecore/content") && signalRService != null && item.Statistics.Created == item.Statistics.Updated && !hasWorkFlowField)
+                {
+                    signalRService.ItemActivitySignal(new ItemModel()
+                    {
+                        ItemName = item.Name,
+                        ItemID = item.ID.Guid.ToString("N"),
+                        UserName = item.Statistics.UpdatedBy,
+                        UserFullName = Sitecore.Context.User.Profile.FullName,
+                        ItemPath = item.Paths.FullPath,
+                        Message = $"{item.Name} has been created.",
+                        DateTime = DateTime.Now.ToString()
+                    });
+                    Log.Debug($"ItemCreatedNotification.OnItemSaved: Triggered realtime notification for {item.ID}", this);
+                }
+            }
+            catch (Exception ex)
+            {
+                Sitecore.Diagnostics.Log.Error($"{this} {ex.Message}", ex, this);
             }
         }
     }

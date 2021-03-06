@@ -1,11 +1,12 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace RealtimeNotifier.Foundation.SignalR.Models
 {
+    /// <summary>
+    /// The <see cref="BaseModel"/> class which provide all necessary properties to be used for 
+    /// creating the notification data model.
+    /// </summary>
     public class BaseModel
     {
         [JsonProperty("userName")]

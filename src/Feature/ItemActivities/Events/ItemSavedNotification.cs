@@ -1,12 +1,8 @@
 ﻿using RealtimeNotifier.Feature.ItemActivities.Models;
 using RealtimeNotifier.Foundation.SignalR.Services;
-using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.Events;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace RealtimeNotifier.Feature.ItemActivities.Events
 {
@@ -23,22 +19,38 @@ namespace RealtimeNotifier.Feature.ItemActivities.Events
 
         protected void OnItemSaved(object sender, EventArgs args)
         {
-            Sitecore.Data.Items.Item item = Event.ExtractParameter<Sitecore.Data.Items.Item>(args, 0);
-            var itemChanges = Event.ExtractParameter<Sitecore.Data.Items.ItemChanges>(args, 1);
-            var isRenamed = itemChanges.Properties.ContainsKey("name");
-            if (item.Paths.FullPath.ToLowerInvariant().StartsWith("/sitecore/content") && signalRService != null && item.Statistics.Created != item.Statistics.Updated && !isRenamed)
+            try
             {
-                signalRService.ItemActivitySignal(new ItemModel()
+                //Taking the item from Arguments
+                Sitecore.Data.Items.Item item = Event.ExtractParameter<Sitecore.Data.Items.Item>(args, 0);
+                if (item.Database.Name.ToLowerInvariant().Equals("web"))
                 {
-                    ItemName = item.Name,
-                    ItemID = item.ID.Guid.ToString("N"),
-                    UserName = item.Statistics.UpdatedBy,
-                    UserFullName = Sitecore.Context.User.Profile.FullName,
-                    ItemPath = item.Paths.FullPath,
-                    Message = $"{item.Name} has been updated.",
-                    DateTime = DateTime.Now.ToString()
-                });
-                Log.Info($"ItemSavedNotification.OnItemSaved: Triggered realtime notification for {item.ID}", this);
+                    return;
+                }
+                //To avoid double notifications while renaming the item, we put a check on the 'name' property
+                //in the Properties list.
+                var itemChanges = Event.ExtractParameter<Sitecore.Data.Items.ItemChanges>(args, 1);
+                //Boolean created to avoid Item Save Notification when the Item is renamed
+                var isRenamed = itemChanges.Properties.ContainsKey("name");
+                //When Created and Updated date are same, means the Item got created! Don't fire Save Notification
+                if (item.Paths.FullPath.ToLowerInvariant().StartsWith("/sitecore/content") && signalRService != null && item.Statistics.Created != item.Statistics.Updated && !isRenamed)
+                {
+                    signalRService.ItemActivitySignal(new ItemModel()
+                    {
+                        ItemName = item.Name,
+                        ItemID = item.ID.Guid.ToString("N"),
+                        UserName = item.Statistics.UpdatedBy,
+                        UserFullName = Sitecore.Context.User.Profile.FullName,
+                        ItemPath = item.Paths.FullPath,
+                        Message = $"{item.Name} has been updated.",
+                        DateTime = DateTime.Now.ToString()
+                    });
+                    Log.Debug($"ItemSavedNotification.OnItemSaved: Triggered realtime notification for {item.ID}", this);
+                }
+            }
+            catch (Exception ex)
+            {
+                Sitecore.Diagnostics.Log.Error($"{this} {ex.Message}", ex, this);
             }
         }
     }

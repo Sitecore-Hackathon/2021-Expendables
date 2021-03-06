@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNet.SignalR.Hubs;
-using RealtimeNotifier.Foundation.SignalR.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RealtimeNotifier.Foundation.SignalR.Models;
 
 namespace RealtimeNotifier.Foundation.SignalR.Services
 {

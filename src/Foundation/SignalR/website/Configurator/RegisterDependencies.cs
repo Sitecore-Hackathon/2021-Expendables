@@ -1,10 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using RealtimeNotifier.Foundation.SignalR.Services;
 using Sitecore.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace RealtimeNotifier.Foundation.SignalR.Configurator
 {
