@@ -21,6 +21,9 @@ namespace RealtimeNotifier.Feature.ItemActivities.Events
         protected void OnItemSaved(object sender, EventArgs args)
         {
             Sitecore.Data.Items.Item item = Event.ExtractParameter<Sitecore.Data.Items.Item>(args, 0);
+            //We were getting double notifications when the item is created where Workflow has been set to the
+            //item template and to avoid the second notification, here we implemented a check for workflow
+            //field in the FieldChange list.
             var itemChanges = Event.ExtractParameter<Sitecore.Data.Items.ItemChanges>(args, 1);
             var hasWorkFlowField = itemChanges.FieldChanges.Cast<FieldChange>().Any(f => f.FieldID == Sitecore.FieldIDs.Workflow);
             if (item.Paths.FullPath.ToLowerInvariant().StartsWith("/sitecore/content") && signalRService != null && item.Statistics.Created == item.Statistics.Updated && !hasWorkFlowField)

@@ -1,4 +1,5 @@
-﻿using Sitecore.Diagnostics;
+﻿using RealtimeNotifier.Foundation.SignalR.Models;
+using Sitecore.Diagnostics;
 using Sitecore.Shell.Applications.ContentEditor.Pipelines.RenderContentEditor;
 using Sitecore.StringExtensions;
 using System;
@@ -11,12 +12,9 @@ using System.Xml;
 
 namespace RealtimeNotifier.Foundation.SignalR.Pipelines.RenderContentEditor
 {
-    public class Resource
-    {
-        public String Path { get; set; }
-
-        public int Order { get; set; }
-    }
+    /// <summary>
+    /// Registers the necessary JavaScript and Stylesheets for the module to work.
+    /// </summary>
     public class RegisterSignalRResources
     {
         private const string JavascriptTag = "<script src=\"{0}\"></script>";
@@ -26,6 +24,10 @@ namespace RealtimeNotifier.Foundation.SignalR.Pipelines.RenderContentEditor
 
         protected IList<string> Styles { get; } = new List<string>();
 
+        /// <summary>
+        /// Reads the path and order property of the script node from the configuration file.
+        /// </summary>
+        /// <param name="configNode"></param>
         public void AddScriptResource(XmlNode configNode)
         {
             if (configNode.Attributes == null)
@@ -43,6 +45,8 @@ namespace RealtimeNotifier.Foundation.SignalR.Pipelines.RenderContentEditor
         public void Process(RenderContentEditorArgs args)
         {
             Assert.ArgumentNotNull(args, nameof(args));
+            //We faced the issue of jQuery not getting loaded while submitting the item to workflow and hence
+            //we have to apply following fix to avoid the JavaScript related errors.
             if (HttpContext.Current.Request.Url.ToString().ToLowerInvariant().Contains("/sitecore/shell/applications/workbox/commenteditor.aspx"))
             {
                 return;
@@ -51,7 +55,8 @@ namespace RealtimeNotifier.Foundation.SignalR.Pipelines.RenderContentEditor
             {
                 return;
             }
-            //Add the current logged in user details
+            //Create the JavaScript variable to store the authenticated user information
+            //which will be used across module from the client side scripts.
             try
             {
                 var serializationSettings = new Newtonsoft.Json.JsonSerializerSettings();
@@ -71,10 +76,12 @@ namespace RealtimeNotifier.Foundation.SignalR.Pipelines.RenderContentEditor
             {
                 Sitecore.Diagnostics.Log.Error($"{this} {ex.Message}", ex, this);
             }
+
             foreach(Resource resource in this.Scripts.OrderBy(r => r.Order))
             {
                 handler.Header.Controls.Add((Control)new LiteralControl(JavascriptTag.FormatWith(resource.Path)));
             }
+
             foreach (string style in this.Styles)
             {
                 handler.Header.Controls.Add((Control)new LiteralControl(LinkTag.FormatWith(style)));

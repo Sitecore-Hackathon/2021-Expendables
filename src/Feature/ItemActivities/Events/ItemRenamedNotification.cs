@@ -23,6 +23,7 @@ namespace RealtimeNotifier.Feature.ItemActivities
         protected void OnItemRenamed(object sender, EventArgs args)
         {
             Sitecore.Data.Items.Item item = Event.ExtractParameter<Sitecore.Data.Items.Item>(args, 0);
+            //Make sure items renamed below the "/sitecore/content" node are only considered for the notification.
             if (item.Paths.FullPath.ToLowerInvariant().StartsWith("/sitecore/content") && signalRService != null)
             {
                 signalRService.ItemActivitySignal(new ItemModel()

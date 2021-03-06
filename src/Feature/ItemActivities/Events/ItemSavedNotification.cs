@@ -24,6 +24,8 @@ namespace RealtimeNotifier.Feature.ItemActivities.Events
         protected void OnItemSaved(object sender, EventArgs args)
         {
             Sitecore.Data.Items.Item item = Event.ExtractParameter<Sitecore.Data.Items.Item>(args, 0);
+            //To avoid double notifications while renaming the item, we put a check on the 'name' property
+            //in the Properties list.
             var itemChanges = Event.ExtractParameter<Sitecore.Data.Items.ItemChanges>(args, 1);
             var isRenamed = itemChanges.Properties.ContainsKey("name");
             if (item.Paths.FullPath.ToLowerInvariant().StartsWith("/sitecore/content") && signalRService != null && item.Statistics.Created != item.Statistics.Updated && !isRenamed)
