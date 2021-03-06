@@ -18,11 +18,15 @@
         var totalNotifications = 0;
         notificationBellIconContainer.find('#dropdownMenu1').click(function () {
             if (!notificationDropdownOpen) {
-                notificationBellIconContainer.find('#notification-area').show("slow");
+                notificationBellIconContainer.find('#notification-area').show(100);
                 notificationDropdownOpen = true;
+                console.log('Opening dropdown');
+                $('.signalr-dropdown .badge').html('');
+                $('.signalr-dropdown .badge').addClass('hide');
+                totalNotifications = 0;
             }
             else {
-                notificationBellIconContainer.find('#notification-area').hide("slow");
+                notificationBellIconContainer.find('#notification-area').hide(100);
                 notificationDropdownOpen = false;
             }
             
@@ -35,7 +39,7 @@
             e.stopPropagation();
             var container = notificationBellIconContainer.find('.signalr-dropdown');
             if (container.has(e.target).length === 0 && notificationDropdownOpen) {
-                notificationBellIconContainer.find('#notification-area').hide("slow");
+                notificationBellIconContainer.find('#notification-area').hide(100);
             }
         });
         $.appendMessage = function (notification) {
