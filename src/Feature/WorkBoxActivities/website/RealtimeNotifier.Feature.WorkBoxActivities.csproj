@@ -89,7 +89,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Properties\PublishProfiles\Local.pubxml.user" />
     <Content Include="Scripts\realtime-notifications-workbox-activities.js" />
     <Content Include="sitecore\shell\Applications\GlobalHeader.ascx" />
     <Content Include="App_Config\Include\Feature\RealtimeNotifier.Feature.WorkBoxActivities.config" />
