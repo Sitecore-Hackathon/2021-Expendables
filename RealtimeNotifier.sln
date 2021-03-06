@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{566D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealtimeNotifier.Foundation.SignalR", "src\Foundation\SignalR\website\RealtimeNotifier.Foundation.SignalR.csproj", "{8D7BCC13-F02C-4A88-BA90-7E1603897FA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealtimeNotifier.Feature.Gutter", "src\Feature\Gutter\RealtimeNotifier.Feature.Gutter.csproj", "{FB61A135-633A-4268-AB1C-4ADA7E68FF21}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,12 +23,17 @@ Global
 		{8D7BCC13-F02C-4A88-BA90-7E1603897FA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D7BCC13-F02C-4A88-BA90-7E1603897FA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D7BCC13-F02C-4A88-BA90-7E1603897FA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB61A135-633A-4268-AB1C-4ADA7E68FF21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB61A135-633A-4268-AB1C-4ADA7E68FF21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB61A135-633A-4268-AB1C-4ADA7E68FF21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB61A135-633A-4268-AB1C-4ADA7E68FF21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8D7BCC13-F02C-4A88-BA90-7E1603897FA8} = {AD8F8E6D-5325-4D72-B7F8-F6039E048C3C}
+		{FB61A135-633A-4268-AB1C-4ADA7E68FF21} = {94709952-E84F-43A5-A8AC-C2B7A76CF1B9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA788F3E-5956-4E83-AA74-5E6917057894}
