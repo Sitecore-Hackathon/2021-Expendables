@@ -1,16 +1,9 @@
 ﻿using RealtimeNotifier.Feature.ItemActivities.Models;
 using RealtimeNotifier.Foundation.SignalR.Services;
-using Sitecore.Configuration;
-using Sitecore.Data.Fields;
-using Sitecore.Data.Items;
 using Sitecore.DependencyInjection;
 using Sitecore.Diagnostics;
 using Sitecore.Publishing.Pipelines.Publish;
-using Sitecore.Resources.Media;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
 namespace RealtimeNotifier.Feature.ItemActivities.Pipelines
 {
@@ -40,9 +33,7 @@ namespace RealtimeNotifier.Feature.ItemActivities.Pipelines
                 Message = $"Publishing has been done.",
                 DateTime = DateTime.Now.ToString()
             });
-            Log.Info($"CustomPublishProcessor.Process: Triggered realtime notification for publishing.", this);
-
+            Log.Debug($"CustomPublishProcessor.Process: Triggered realtime notification for publishing.", this);
         }
-
     }
 }
