@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNet.SignalR;
-using RealtimeNotifier.Foundation.SignalR.Events;
 using RealtimeNotifier.Foundation.SignalR.Models;
 using System;
 using System.Collections.Generic;
