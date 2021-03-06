@@ -19,21 +19,32 @@ namespace RealtimeNotifier.Feature.ItemActivities.Events
 
         protected void OnItemDeleted(object sender, EventArgs args)
         {
-            //Taking the item from Arguments
-            Sitecore.Data.Items.Item item = Event.ExtractParameter<Sitecore.Data.Items.Item>(args, 0);
-            if (signalRService != null)
+            try
             {
-                signalRService.ItemActivitySignal(new ItemModel()
+                //Taking the item from Arguments
+                Sitecore.Data.Items.Item item = Event.ExtractParameter<Sitecore.Data.Items.Item>(args, 0);
+                if (item.Database.Name.ToLowerInvariant().Equals("web"))
                 {
-                    ItemName = item.Name,
-                    ItemID = item.ID.Guid.ToString("N"),
-                    UserName = item.Statistics.UpdatedBy,
-                    UserFullName = Sitecore.Context.User.Profile.FullName,
-                    //ItemPath = item.Paths.FullPath,
-                    Message = $"{item.Name} has been deleted.",
-                    DateTime = DateTime.Now.ToString()
-                });
-                Log.Debug($"ItemSavedNotification.OnItemDeleted: Triggered realtime notification for {item.ID}", this);
+                    return;
+                }
+                if (signalRService != null)
+                {
+                    signalRService.ItemActivitySignal(new ItemModel()
+                    {
+                        ItemName = item.Name,
+                        ItemID = item.ID.Guid.ToString("N"),
+                        UserName = item.Statistics.UpdatedBy,
+                        UserFullName = Sitecore.Context.User.Profile.FullName,
+                        //ItemPath = item.Paths.FullPath,
+                        Message = $"{item.Name} has been deleted.",
+                        DateTime = DateTime.Now.ToString()
+                    });
+                    Log.Debug($"ItemSavedNotification.OnItemDeleted: Triggered realtime notification for {item.ID}", this);
+                }
+            }
+            catch (Exception ex)
+            {
+                Sitecore.Diagnostics.Log.Error($"{this} {ex.Message}", ex, this);
             }
         }
     }
