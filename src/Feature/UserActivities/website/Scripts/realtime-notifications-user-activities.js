@@ -5,7 +5,7 @@
             console.log('User activity');
             console.log(notification);
             console.log('Window username: ' + window.scUser.UserName);
-            if (notification.notificationType === 4 && notification.userName !== window.scUser.UserName) {
+            if (notification.notificationType === 4 && notification.userName !== window.scUser.UserName && notification.userFullName !== null) {
                 $.notify(notification.userFullName + " " + notification.message, { className: 'info', position: 'bottom right' });
                 $.appendMessage(notification);
             }
