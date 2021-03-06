@@ -34,7 +34,7 @@ Realtime Notifier uses SignalR to send push notifications to all active Sitecore
 
 ## Video link
 
-⟹ [Replace this Video link](#video-link)
+[https://youtu.be/ytZGMTAcZoQ](#video-link)
 
 
 
