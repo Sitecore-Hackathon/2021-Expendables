@@ -12,15 +12,15 @@ namespace RealtimeNotifier.Feature.ItemActivities
     /// <summary>
     /// Class that handle to send push notification when item is saved by the user.
     /// </summary>
-    public class ItemSavedNotification
+    public class ItemDeletedNotification
     {
         private ISignalRService signalRService;
-        public ItemSavedNotification(ISignalRService signalRService)
+        public ItemDeletedNotification(ISignalRService signalRService)
         {
             this.signalRService = signalRService;
         }
 
-        protected void OnItemSaved(object sender, EventArgs args)
+        protected void OnItemDeleted(object sender, EventArgs args)
         {
             Sitecore.Data.Items.Item item = Event.ExtractParameter<Sitecore.Data.Items.Item>(args, 0);
             if (item.Paths.FullPath.ToLowerInvariant().StartsWith("/sitecore/content") && signalRService != null)
@@ -32,10 +32,10 @@ namespace RealtimeNotifier.Feature.ItemActivities
                     UserName = item.Statistics.UpdatedBy,
                     UserFullName = Sitecore.Context.User.Profile.FullName,
                     ItemPath = item.Paths.FullPath,
-                    Message = $"{item.Name} has been udpated.",
+                    Message = $"{item.Name} has been deleted.",
                     DateTime = DateTime.Now.ToString()
                 });
-                Log.Info($"ItemSavedNotification.OnItemSaved: Triggered realtime notification for {item.ID}", this);
+                Log.Info($"ItemSavedNotification.OnItemDeleted: Triggered realtime notification for {item.ID}", this);
             }
         }
     }
