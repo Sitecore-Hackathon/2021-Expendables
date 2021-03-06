@@ -1,42 +1,38 @@
 # Hackathon Submission Entry form
 
-> __Important__  
-> 
-> Copy and paste the content of this file into README.md or face automatic __disqualification__  
-> All headlines and subheadlines shall be retained if not noted otherwise.  
-> Fill in text in each section as instructed and then delete the existing text, including this blockquote.
-
-You can find a very good reference to Github flavoured markdown reference in [this cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). If you want something a bit more WYSIWYG for editing then could use [StackEdit](https://stackedit.io/app) which provides a more user friendly interface for generating the Markdown code. Those of you who are [VS Code fans](https://code.visualstudio.com/docs/languages/markdown#_markdown-preview) can edit/preview directly in that interface too.
-
 ## Team name
-⟹ Expendables
+Expendables
 
 ## Category
-⟹ The best enhancement to the Sitecore Admin (XP) for Content Editors & Marketers210.
+The best enhancement to the Sitecore Admin (XP) for Content Editors & Marketers210.
 
 ## Description
-⟹ Realtime Notifier uses SignalR to send push notifications to all active Sitecore "Content Editor" users to update them about the latest changes that other users might have done.  
+Realtime Notifier uses SignalR to send push notifications to all active Sitecore "Content Editor" users to update them about the latest changes that other users might have done.  
 
-  - Module Purpose: The purpose of this module to keep content author up to the date and informed about what is happening on the items.
-  - What problem was solved (if any): Currently content author doesn't get any real time notification about what is going on to the items and if there are some items that need their attention to either approve or reject those changes without going into Workbox.
-    - How does this module solve it: Content Author will get the real time notification in content editor itself where he spend most of the time and he can get all update on other items without moving aways from his its own content editor page. 
+  - What is SignalR: As per Wikipedia, SignalR is a free and open-source software library for Microsoft ASP.NET that allows server code to send asynchronous notifications to client-side web applications. The library includes server-side and client-side JavaScript components.
+  - The purpose of this module to keep content author up to the date and informed about what is happening on the items.
+  - Currently content author doesn't get any real time notification about what is going on to the items and if there are some items that need their attention to either approve or reject those changes without going into Workbox.
+    - Content Author will get the real time notification in content editor itself where he spend most of the time and he can get all update on other items without moving aways from his its own content editor page. 
 
-Here, as a part of this solution, we considered the following content author operations for processing the push notifications.
+  - Here, as a part of this solution, we considered the following content author operations for processing the push notifications. The notification will be shown to the Notification center and if the parent root is expanded, the item that was updated by another user will also have an indication in its Gutter area.
+    - Item Activities 
+		- Item Created
+		- Item Saved
+		- Item Renamed
+		- Item Deleted
 
-Item Events
-Item Saved: The notification will be shown to the Notification center and if the parent root is expanded, the item that was updated by another user will also have an indication in its Gutter area.
-Item Renamed: 
-Item Deleted: 
+    - User Activities 
+		- Content Editor is being accessed
 
-Workflow
-Item moved to a workflow stage
-Item approved for publishing
-Item rejected for publishing
+    - Publishing Activities
+		- Publish End
 
-_You can alternately paste a [link here](#docs) to a document within this repo containing the description._
+    - Workflow Activities
+		- Item Submit
+		- Item Approved
+		- Item Rejected
 
 ## Video link
-⟹ Provide a video highlighing your Hackathon module submission and provide a link to the video. You can use any video hosting, file share or even upload the video to this repository. _Just remember to update the link below_
 
 ⟹ [Replace this Video link](#video-link)
 
@@ -44,56 +40,50 @@ _You can alternately paste a [link here](#docs) to a document within this repo c
 
 ## Pre-requisites and Dependencies
 
-⟹ Does your module rely on other Sitecore modules or frameworks?
+- Sitecore 10.1
+- Microsoft .NET Framework 4.8
+- SignalR 2.4.1
 
-- List any dependencies
-- Or other modules that must be installed
-- Or services that must be enabled/configured
 
-_Remove this subsection if your entry does not have any prerequisites other than Sitecore_
 
 ## Installation instructions
-⟹ Write a short clear step-wise instruction on how to install your module.  
 
-> _A simple well-described installation process is required to win the Hackathon._  
-> Feel free to use any of the following tools/formats as part of the installation:
-> - Sitecore Package files
-> - Docker image builds
-> - Sitecore CLI
-> - msbuild
-> - npm / yarn
-> 
-> _Do not use_
-> - TDS
-> - Unicorn
- 
-f. ex. 
+1. Open Visual Studio 2019 with Administrator rights`
+2. Set `PublishUrl` in "PublishProfiles" to target your Sitecore instance
+3. Publish all 4 projects to targetted Sitecore instance
+4. Install provided Sitecore package to add required items
 
-1. Start docker environment using `.\Start-Hackathon.ps1`
-2. Open solution in Visual Studio and run build
-3. Use the Sitecore Installation wizard to install the [package](#link-to-package)
-4. ...
-5. profit
 
 ### Configuration
-⟹ If there are any custom configuration that has to be set manually then remember to add all details here.
+Set `PublishUrl` in "PublishProfiles" to target your Sitecore instance
 
-_Remove this subsection if your entry does not require any configuration that is not fully covered in the installation instructions already_
 
 ## Usage instructions
-⟹ Provide documentation about your module, how do the users use your module, where are things located, what do the icons mean, are there any secret shortcuts etc.
+1. Create some users that have "Content Author" rights. 
+2. Log into Sitecore client application from these users in different browser 
+3. Open Sitecore Content Editor in each user session
+4. Try updating Sitecore items from Content Tree
+5. All users should be able to get real time notifications
 
-Include screenshots where necessary. You can add images to the `./images` folder and then link to them from your documentation:
+- Notification Areas
+	- Content Tree Gutter
+	- Bell Icon at the bottom
+	- Notification Popup bottom right
+
+![Realtime Notification](docs/images/gutter-notification.png?raw=true "Realtime Notification")
+
+- Notification List
+	- Bell Icon at the bottom
+
+![Realtime Notification](docs/images/bell-notifications.png?raw=true "Realtime Notification")
+
+## Further Enchancement
+Due to 24hours time constraint we were not able to include many other intutive features but we would definitely like to keep on adding those features to make it a great asset to the Content Author. These are few, we can plan as short term goal.
+
+- Message Content managment through Sitecore
+- Notification settings through Sitecore
+- Persistent Notification
+- Live Chat between Authors
 
 ![Hackathon Logo](docs/images/hackathon.png?raw=true "Hackathon Logo")
 
-You can embed images of different formats too:
-
-![Deal With It](docs/images/deal-with-it.gif?raw=true "Deal With It")
-
-And you can embed external images too:
-
-![Random](https://thiscatdoesnotexist.com/)
-
-## Comments
-If you'd like to make additional comments that is important for your module entry.
