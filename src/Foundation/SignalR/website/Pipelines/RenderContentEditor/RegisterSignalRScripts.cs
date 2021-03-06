@@ -47,7 +47,7 @@ namespace RealtimeNotifier.Foundation.SignalR.Pipelines.RenderContentEditor
             {
                 return;
             }
-            if(!(HttpContext.Current.Handler is Page handler))
+            if (!(HttpContext.Current.Handler is Page handler))
             {
                 return;
             }
@@ -63,7 +63,8 @@ namespace RealtimeNotifier.Foundation.SignalR.Pipelines.RenderContentEditor
                     DisplayName = Sitecore.Context.User.DisplayName,
                     FullName = Sitecore.Context.User.Profile.FullName,
                     Email = Sitecore.Context.User.Profile.Email,
-                    IsAdministartor = Sitecore.Context.User.IsAdministrator
+                    IsAdministartor = Sitecore.Context.User.IsAdministrator,
+                    Roles = Sitecore.Context.User.Roles
                 }, serializationSettings))));
             }
             catch (Exception ex)
