@@ -6,15 +6,12 @@ using System.Web.UI.WebControls;
 using Sitecore.Configuration;
 using Sitecore.Data.Items;
 using Sitecore.Links;
-using Sitecore.Pipelines;
-using Sitecore.Pipelines.Logout;
 using Sitecore.Resources;
 using Sitecore.Security.Accounts;
 using Sitecore.Shell.Applications;
 using Sitecore.Web;
 using Sitecore.Web.UI;
 using Sitecore.Web.UI.HtmlControls;
-using Sitecore.Web.UI.Sheer;
 using Literal = Sitecore.Web.UI.HtmlControls.Literal;
 
 namespace RealtimeNotifier.Feature.WorkBoxActivities.sitecore.shell.Applications
