@@ -43,6 +43,10 @@ namespace RealtimeNotifier.Foundation.SignalR.Pipelines.RenderContentEditor
         public void Process(RenderContentEditorArgs args)
         {
             Assert.ArgumentNotNull(args, nameof(args));
+            if (HttpContext.Current.Request.Url.ToString().ToLowerInvariant().Contains("/sitecore/shell/applications/workbox/commenteditor.aspx"))
+            {
+                return;
+            }
             if(!(HttpContext.Current.Handler is Page handler))
             {
                 return;
