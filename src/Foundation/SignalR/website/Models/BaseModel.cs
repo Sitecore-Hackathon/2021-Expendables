@@ -11,6 +11,15 @@ namespace RealtimeNotifier.Foundation.SignalR.Models
         [JsonProperty("userName")]
         public string UserName { get; set; }
 
+        [JsonProperty("userDisplayName")]
+        public String UserDisplayName { get; set; }
+
+        [JsonProperty("userFullName")]
+        public String UserFullName { get; set; }
+
+        [JsonProperty("userEmail")]
+        public string UserEmail { get; set; }
+
         [JsonProperty("itemID")]
         public string ItemID { get; set; }
 
@@ -22,6 +31,12 @@ namespace RealtimeNotifier.Foundation.SignalR.Models
 
         [JsonProperty("notificationType")]
         public NotificationType NotificationType { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("time")]
+        public string DateTime { get; set; }
     }
 
     public enum NotificationType
@@ -30,5 +45,6 @@ namespace RealtimeNotifier.Foundation.SignalR.Models
         ItemSaving,
         UserLogged,
         UserLoggerOut,
+        ContentEditorOpened
     }
 }
