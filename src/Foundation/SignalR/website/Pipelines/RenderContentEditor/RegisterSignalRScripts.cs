@@ -43,7 +43,11 @@ namespace RealtimeNotifier.Foundation.SignalR.Pipelines.RenderContentEditor
         public void Process(RenderContentEditorArgs args)
         {
             Assert.ArgumentNotNull(args, nameof(args));
-            if(!(HttpContext.Current.Handler is Page handler))
+            if (HttpContext.Current.Request.Url.ToString().ToLowerInvariant().Contains("/sitecore/shell/applications/workbox/commenteditor.aspx"))
+            {
+                return;
+            }
+            if (!(HttpContext.Current.Handler is Page handler))
             {
                 return;
             }
@@ -59,7 +63,8 @@ namespace RealtimeNotifier.Foundation.SignalR.Pipelines.RenderContentEditor
                     DisplayName = Sitecore.Context.User.DisplayName,
                     FullName = Sitecore.Context.User.Profile.FullName,
                     Email = Sitecore.Context.User.Profile.Email,
-                    IsAdministartor = Sitecore.Context.User.IsAdministrator
+                    IsAdministartor = Sitecore.Context.User.IsAdministrator,
+                    Roles = Sitecore.Context.User.Roles
                 }, serializationSettings))));
             }
             catch (Exception ex)

@@ -2,6 +2,7 @@
     $(function () {
         var notificationHub = $.connection.notificationHub;
         notificationHub.client.notify = function (notification) {
+            console.log('User activity');
             console.log(notification);
             console.log('Window username: ' + window.scUser.UserName);
             if (notification.notificationType === 4 && notification.userName !== window.scUser.UserName) {

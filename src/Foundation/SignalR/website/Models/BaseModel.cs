@@ -45,6 +45,9 @@ namespace RealtimeNotifier.Foundation.SignalR.Models
         ItemSaving,
         UserLogged,
         UserLoggerOut,
-        ContentEditorOpened
+        ContentEditorOpened,
+        WorkflowSaved,
+        WorkflowApproved,
+        WorkflowRejected
     }
 }

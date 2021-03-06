@@ -1,68 +1,292 @@
-﻿.signar-sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 999;
-    top: 0;
-    left: 0;
-    background-color: #2b2b2b;
-    overflow-x: hidden;
-    transition: 0.5s;
-    /*padding-top: 60px;*/
+﻿.hide{
+    display: none;
+}
+.show{
+    display: block;
+}
+.message-div .username{
+    font-size: 13px;
+    font-weight: 600;
+}
+/* -----------------------------------------
+   Timeline
+----------------------------------------- */
+.signalr-dropdown{
+    float: left !important;
+    position: relative;
+    padding: 13px;
+    margin-top: -9px;
+}
+    .signalr-dropdown .dropdown-menu {
+        display: none;
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        z-index: 1000;
+        min-width: 300px;
+        margin: 2px 0 0;
+        font-size: 14px;
+        text-align: left;
+        list-style: none;
+        background-color: #fff;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        border: 1px solid #ccc;
+        border: 1px solid rgba(0,0,0,.15);
+        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        padding: 0;
+    }
+        .signalr-dropdown .dropdown-menu > li > a {
+            display: block;
+            padding: 3px 20px;
+            clear: both;
+            font-weight: 400;
+            line-height: 1.42857143;
+            color: #333;
+            white-space: nowrap;
+        }
+            .signalr-dropdown .dropdown-menu > li a{
+                padding: 10px 20px;
+            }
+            .timeline {
+                list-style: none;
+                padding-left: 0;
+                position: relative;
+            }
+
+    /*.timeline:after {
+        content: "";
+        height: auto;
+        width: 1px;
+        background: #e3e3e3;
+        position: absolute;
+        top: 5px;
+        left: 30px;
+        bottom: 25px;
+    }
+
+    .timeline.timeline-sm:after {
+        left: 12px;
+    }*/
+
+    .timeline li {
+        position: relative;
+        padding-left: 70px;
+        margin-bottom: 20px;
+    }
+
+        /*.timeline li:after {
+            content: "";
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e3e3e3;
+            position: absolute;
+            left: 24px;
+            top: 5px;
+        }*/
+
+        .timeline li .timeline-date {
+            display: inline-block;
+            width: 100%;
+            color: #a6a6a6;
+            font-style: italic;
+            font-size: 13px;
+        }
+
+    .timeline.timeline-icons li {
+        padding-top: 7px;
+    }
+
+        /*.timeline.timeline-icons li:after {
+            width: 32px;
+            height: 32px;
+            background: #fff;
+            border: 1px solid #e3e3e3;
+            left: 14px;
+            top: 0;
+            z-index: 11;
+        }*/
+
+        .timeline.timeline-icons li .timeline-icon {
+            position: absolute;
+            left: 23.5px;
+            top: 7px;
+            z-index: 12;
+        }
+
+            .timeline.timeline-icons li .timeline-icon [class*=glyphicon] {
+                top: -1px !important;
+            }
+
+                .timeline.timeline-icons.timeline-sm li {
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    margin-bottom: 10px;
+                }
+
+        /*.timeline.timeline-icons.timeline-sm li:after {
+            left: -5px;
+        }*/
+
+        .timeline.timeline-icons.timeline-sm li .timeline-icon {
+            left: 4.5px;
+        }
+
+    .timeline.timeline-advanced li {
+        padding-top: 0;
+    }
+
+        /*.timeline.timeline-advanced li:after {
+            background: #fff;
+            border: 1px solid #29b6d8;
+        }
+
+        .timeline.timeline-advanced li:before {
+            content: "";
+            width: 52px;
+            height: 52px;
+            border: 10px solid #fff;
+            position: absolute;
+            left: 4px;
+            top: -10px;
+            border-radius: 50%;
+            z-index: 12;
+        }*/
+
+        .timeline.timeline-advanced li .timeline-icon {
+            color: #29b6d8;
+        }
+
+        .timeline.timeline-advanced li .timeline-date {
+            width: 75px;
+            position: absolute;
+            right: 5px;
+            top: 3px;
+            text-align: right;
+        }
+
+        .timeline.timeline-advanced li .timeline-title {
+            font-size: 17px;
+            margin-bottom: 0;
+            padding-top: 5px;
+            font-weight: bold;
+        }
+
+        .timeline.timeline-advanced li .timeline-subtitle {
+            display: inline-block;
+            width: 100%;
+            color: #a6a6a6;
+        }
+
+        .timeline.timeline-advanced li .timeline-content {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding-right: 70px;
+        }
+
+            .timeline.timeline-advanced li .timeline-content p {
+                margin-bottom: 3px;
+            }
+
+            .timeline.timeline-advanced li .timeline-content .divider-dashed {
+                padding-top: 0px;
+                margin-bottom: 7px;
+                width: 200px;
+            }
+
+        .timeline.timeline-advanced li .timeline-user {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+            /*.timeline.timeline-advanced li .timeline-user:before,
+            .timeline.timeline-advanced li .timeline-user:after {
+                content: " ";
+                display: table;
+            }
+
+            .timeline.timeline-advanced li .timeline-user:after {
+                clear: both;
+            }*/
+
+            .timeline.timeline-advanced li .timeline-user .timeline-avatar {
+                border-radius: 50%;
+                width: 32px;
+                height: 32px;
+                float: left;
+                margin-right: 10px;
+            }
+
+            .timeline.timeline-advanced li .timeline-user .timeline-user-name {
+                font-weight: bold;
+                margin-bottom: 0;
+            }
+
+            .timeline.timeline-advanced li .timeline-user .timeline-user-subtitle {
+                color: #a6a6a6;
+                margin-top: -4px;
+                margin-bottom: 0;
+            }
+
+        .timeline.timeline-advanced li .timeline-link {
+            margin-left: 5px;
+            display: inline-block;
+        }
+
+.timeline-load-more-btn {
+    margin-left: 70px;
 }
 
-    .signar-sidenav .header {
-        padding: 15px;
-        color: #fff;
-        font-size: 20px;
+    .timeline-load-more-btn i {
+        margin-right: 5px;
+    }
+    #timeline-list{
+        max-height: 320px;
+        overflow-y: auto;
     }
 
-    .signar-sidenav a {
-        padding: 8px 8px 8px 32px;
-        text-decoration: none;
-        font-size: 25px;
-        color: #818181;
-        display: block;
-        transition: 0.3s;
-    }
 
-        .signar-sidenav a:hover {
-            color: #f1f1f1;
-        }
+/* -----------------------------------------
+   Dropdown
+----------------------------------------- */
+.dropdown-menu {
+    padding: 0 0 0 0;
+}
 
-    .signar-sidenav .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
-    }
-    .signar-sidenav .message-div {
-        padding: 5px 7px;
-        margin: 5px;
-        color: #FFF;
-        font-size: 15px;
-        border: 1px solid #484646;
-        border-radius: 5px;
-    }
+a.dropdown-menu-header {
+    background: #f7f9fe;
+    font-weight: bold;
+    border-bottom: 1px solid #e3e3e3;
+}
 
-        .signar-sidenav .message-div .username{
-            font-style: italic;
-        }
-        .signar-sidenav .message-div .time {
-            margin-left: 5px;
-        }
+.dropdown-menu > li a {
+    padding: 10px 20px;
+}
 
-        #ContentEditorForm {
-            transition: margin-left .5s;
-        }
+/* -----------------------------------------
+   Badge
+----------------------------------------- */
 
-@media screen and (max-height: 450px) {
-    .signar-sidenav {
-        padding-top: 15px;
-    }
+.badge {
+    padding: 3px 5px 2px;
+    position: absolute;
+    top: 8px;
+    right: 5px;
+    /*display: inline-block;*/
+    min-width: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+    line-height: 1;
+    vertical-align: baseline;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 10px;
+}
 
-        .signar-sidenav a {
-            font-size: 18px;
-        }
+.badge-danger {
+    background-color: #db5565;
 }
