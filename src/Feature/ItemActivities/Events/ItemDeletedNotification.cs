@@ -23,7 +23,7 @@ namespace RealtimeNotifier.Feature.ItemActivities
         protected void OnItemDeleted(object sender, EventArgs args)
         {
             Sitecore.Data.Items.Item item = Event.ExtractParameter<Sitecore.Data.Items.Item>(args, 0);
-            if (item.Paths.FullPath.ToLowerInvariant().StartsWith("/sitecore/content") && signalRService != null)
+            if (signalRService != null)
             {
                 signalRService.ItemActivitySignal(new ItemModel()
                 {
@@ -31,7 +31,7 @@ namespace RealtimeNotifier.Feature.ItemActivities
                     ItemID = item.ID.Guid.ToString("N"),
                     UserName = item.Statistics.UpdatedBy,
                     UserFullName = Sitecore.Context.User.Profile.FullName,
-                    ItemPath = item.Paths.FullPath,
+                    //ItemPath = item.Paths.FullPath,
                     Message = $"{item.Name} has been deleted.",
                     DateTime = DateTime.Now.ToString()
                 });
