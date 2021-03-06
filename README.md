@@ -15,16 +15,19 @@ Realtime Notifier uses SignalR to send push notifications to all active Sitecore
     - Content Author will get the real time notification in content editor itself where he spend most of the time and he can get all update on other items without moving aways from his its own content editor page. 
 
   - Here, as a part of this solution, we considered the following content author operations for processing the push notifications. The notification will be shown to the Notification center and if the parent root is expanded, the item that was updated by another user will also have an indication in its Gutter area.
-    - Item Events 
+    - Item Activities 
 		- Item Created
 		- Item Saved
 		- Item Renamed
 		- Item Deleted
 
-    - Publishing Events
+   - User Activities 
+		- Content Editor is being accessed
+
+    - Publishing Activities
 		- Publish End
 
-    - Workflow Events
+    - Workflow Activities
 		- Item Submit
 		- Item Approved
 		- Item Rejected
