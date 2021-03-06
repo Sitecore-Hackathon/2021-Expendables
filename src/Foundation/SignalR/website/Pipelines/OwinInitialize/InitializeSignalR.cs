@@ -10,7 +10,14 @@ namespace RealtimeNotifier.Foundation.SignalR.Pipelines.OwinInitialize
     {
         public override void Process(InitializeArgs args)
         {
-            args.App.MapSignalR();
+            try
+            {
+                args.App.MapSignalR();
+            }
+            catch (System.Exception ex)
+            {
+                Sitecore.Diagnostics.Log.Error($"{this} {ex.Message}", ex, this);
+            }
         }
     }
 }

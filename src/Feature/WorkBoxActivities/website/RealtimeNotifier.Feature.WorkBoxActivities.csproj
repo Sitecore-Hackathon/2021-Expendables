@@ -90,7 +90,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\realtime-notifications-workbox-activities.js" />
-    <Content Include="sitecore\shell\Applications\GlobalHeader.ascx" />
     <Content Include="App_Config\Include\Feature\RealtimeNotifier.Feature.WorkBoxActivities.config" />
     <None Include="Web.config" />
   </ItemGroup>
@@ -99,9 +98,6 @@
     <Compile Include="Models\RejectActivityNotification.cs" />
     <Compile Include="Models\SubmitActivityNotification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sitecore\shell\Applications\GlobalHeader.ascx.cs">
-      <DependentUpon>GlobalHeader.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Workflow\Action\OnPublishAction.cs" />
     <Compile Include="Workflow\Action\OnRejectAction.cs" />
     <Compile Include="Workflow\Action\OnSubmitAction.cs" />
