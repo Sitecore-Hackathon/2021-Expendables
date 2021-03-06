@@ -68,18 +68,25 @@ Realtime Notifier uses SignalR to send push notifications to all active Sitecore
  
 f. ex. 
 
-1. Start docker environment using `.\Start-Hackathon.ps1`
-2. Open solution in Visual Studio and run build
-3. Use the Sitecore Installation wizard to install the [package](#link-to-package)
-4. ...
-5. profit
+1. Open Visual Studio 2019 with Administrator rights`
+2. Set `PublishUrl` in "PublishProfiles" to target your Sitecore instance
+3. Publish all 4 projects to targetted Sitecore instance
+4. Install provided Sitecore package to add required items
+
 
 ### Configuration
-⟹ If there are any custom configuration that has to be set manually then remember to add all details here.
+Set `PublishUrl` in "PublishProfiles" to target your Sitecore instance
 
-_Remove this subsection if your entry does not require any configuration that is not fully covered in the installation instructions already_
 
 ## Usage instructions
+1. Create some users that have "Content Author" rights. 
+2. Log into Sitecore client application from these users in different browser 
+3. Open Sitecore Content Editor in each user session
+4. Try updating Sitecore items from Content Tree
+5. All users should be able to get real time notifications
+
+![Realtime Notification](docs/images/bell-notifications.png?raw=true "Realtime Notification")
+
 ⟹ Provide documentation about your module, how do the users use your module, where are things located, what do the icons mean, are there any secret shortcuts etc.
 
 Include screenshots where necessary. You can add images to the `./images` folder and then link to them from your documentation:
