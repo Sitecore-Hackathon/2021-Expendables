@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json;
+using RealtimeNotifier.Foundation.SignalR.Models;
 using Sitecore.Events;
 using System;
 using System.Collections.Generic;
@@ -16,14 +17,13 @@ namespace RealtimeNotifier.Foundation.SignalR.Events
             if (item.Paths.FullPath.ToLowerInvariant().StartsWith("/sitecore/content"))
             {
                 var hub = GlobalHost.ConnectionManager.GetHubContext<NotificationHub>();
-                hub.Clients.All.notify(new Notification() { ItemName = item.Name });
+                hub.Clients.All.notify(new Notification() { ItemName = item.Name, ItemID = item.ID.Guid.ToString("N"), UserName = item.Statistics.UpdatedBy, ItemPath = item.Paths.FullPath });
             }
         }
     }
 
-    public class Notification
+    public class Notification :BaseModel
     {
-        [JsonProperty("itemName")]
-        public String ItemName { get; set; }
+        
     }
 }

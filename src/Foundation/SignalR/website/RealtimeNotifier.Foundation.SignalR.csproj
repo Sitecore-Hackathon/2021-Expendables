@@ -133,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Events\ItemSavedNotification.cs" />
+    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="NotificationHub.cs" />
     <Compile Include="Pipelines\OwinInitialize\InitializeSignalR.cs" />
     <Compile Include="Pipelines\RenderContentEditor\RegisterSignalRScripts.cs" />
