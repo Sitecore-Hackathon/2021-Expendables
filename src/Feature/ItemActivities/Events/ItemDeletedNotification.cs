@@ -35,7 +35,7 @@ namespace RealtimeNotifier.Feature.ItemActivities
                     Message = $"{item.Name} has been deleted.",
                     DateTime = DateTime.Now.ToString()
                 });
-                Log.Info($"ItemSavedNotification: Triggered realtime notification for {item.ID}", this);
+                Log.Info($"ItemSavedNotification.OnItemDeleted: Triggered realtime notification for {item.ID}", this);
             }
         }
     }

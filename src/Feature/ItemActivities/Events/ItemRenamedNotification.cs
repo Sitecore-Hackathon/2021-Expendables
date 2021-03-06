@@ -35,7 +35,7 @@ namespace RealtimeNotifier.Feature.ItemActivities
                     Message = $"{item.Name} has been renamed.",
                     DateTime = DateTime.Now.ToString()
                 });
-                Log.Info($"ItemSavedNotification: Triggered realtime notification for {item.ID}", this);
+                Log.Info($"ItemSavedNotification.OnItemRenamed: Triggered realtime notification for {item.ID}", this);
             }
         }
     }
