@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json;
 using RealtimeNotifier.Foundation.SignalR.Models;
+using RealtimeNotifier.Foundation.SignalR.Services;
+using Sitecore.DependencyInjection;
 using Sitecore.Events;
 using System;
 using System.Collections.Generic;
@@ -16,8 +18,8 @@ namespace RealtimeNotifier.Foundation.SignalR.Events
             Sitecore.Data.Items.Item item = Event.ExtractParameter<Sitecore.Data.Items.Item>(args, 0);
             if (item.Paths.FullPath.ToLowerInvariant().StartsWith("/sitecore/content"))
             {
-                var hub = GlobalHost.ConnectionManager.GetHubContext<NotificationHub>();
-                hub.Clients.All.notify(new Notification() { ItemName = item.Name, ItemID = item.ID.Guid.ToString("N"), UserName = item.Statistics.UpdatedBy, ItemPath = item.Paths.FullPath });
+                var signalService = ServiceLocator.ServiceProvider.GetService(typeof(ISignalRService)) as ISignalRService;
+                signalService.Signal<NotificationHub>(new Notification() { ItemName = item.Name, ItemID = item.ID.Guid.ToString("N"), UserName = item.Statistics.UpdatedBy, ItemPath = item.Paths.FullPath });
             }
         }
     }

@@ -19,5 +19,16 @@ namespace RealtimeNotifier.Foundation.SignalR.Models
 
         [JsonProperty("itemPath")]
         public string ItemPath { get; set; }
+
+        [JsonProperty("notificationType")]
+        public NotificationType NotificationType { get; set; }
+    }
+
+    public enum NotificationType
+    {
+        ItemSaved,
+        ItemSaving,
+        UserLogged,
+        UserLoggerOut,
     }
 }
