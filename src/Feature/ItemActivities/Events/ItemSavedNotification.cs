@@ -9,6 +9,9 @@ using System.Web;
 
 namespace RealtimeNotifier.Feature.ItemActivities
 {
+    /// <summary>
+    /// Class that handle to send push notification when item is saved by the user.
+    /// </summary>
     public class ItemSavedNotification
     {
         private ISignalRService signalRService;
@@ -20,7 +23,7 @@ namespace RealtimeNotifier.Feature.ItemActivities
         protected void OnItemSaved(object sender, EventArgs args)
         {
             Sitecore.Data.Items.Item item = Event.ExtractParameter<Sitecore.Data.Items.Item>(args, 0);
-            if (item.Paths.FullPath.ToLowerInvariant().StartsWith("/sitecore/content"))
+            if (item.Paths.FullPath.ToLowerInvariant().StartsWith("/sitecore/content") && signalRService != null)
             {
                 signalRService.Signal(new ItemModel()
                 {
