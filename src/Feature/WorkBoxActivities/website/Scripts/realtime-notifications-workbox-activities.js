@@ -1,7 +1,8 @@
 ﻿(function ($, window) {
     $(function () {
         var notificationHub = $.connection.notificationHub;
-        notificationHub.client.notify = function (notification) {
+        notificationHub.client.workboxnotify = function (notification) {
+            console.log('Workbox activity');
             console.log(notification);
             console.log('Window username: ' + window.scUser.UserName);
             if (notification.notificationType === 5 && notification.userName !== window.scUser.UserName) {
@@ -18,14 +19,7 @@
             }
         };
         $.connection.hub.start().done(function () {
-            notificationHub.server.send({
-                'userName': window.scUser.UserName,
-                'userDisplayName': window.scUser.DisplayName,
-                'userEmail': window.scUser.Email,
-                'userFullName': window.scUser.FullName,
-                'message': 'Just opened content editor',
-                'notificationType': 'ContentEditorOpened'
-            });
+            
         });
     });
 })($sc, window);

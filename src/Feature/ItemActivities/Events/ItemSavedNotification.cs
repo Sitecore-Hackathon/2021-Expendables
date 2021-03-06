@@ -22,7 +22,17 @@ namespace RealtimeNotifier.Feature.ItemActivities
             Sitecore.Data.Items.Item item = Event.ExtractParameter<Sitecore.Data.Items.Item>(args, 0);
             if (item.Paths.FullPath.ToLowerInvariant().StartsWith("/sitecore/content"))
             {
-                signalRService.Signal(new ItemModel()
+                //signalRService.Signal(new ItemModel()
+                //{
+                //    ItemName = item.Name,
+                //    ItemID = item.ID.Guid.ToString("N"),
+                //    UserName = item.Statistics.UpdatedBy,
+                //    UserFullName = Sitecore.Context.User.Profile.FullName,
+                //    ItemPath = item.Paths.FullPath,
+                //    Message = $"{item.Name} has been udpated.",
+                //    DateTime = DateTime.Now.ToString()
+                //});
+                signalRService.ItemActivitySignal(new ItemModel()
                 {
                     ItemName = item.Name,
                     ItemID = item.ID.Guid.ToString("N"),
