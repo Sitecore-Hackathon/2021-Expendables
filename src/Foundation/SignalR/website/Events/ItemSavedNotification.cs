@@ -19,7 +19,7 @@ namespace RealtimeNotifier.Foundation.SignalR.Events
             if (item.Paths.FullPath.ToLowerInvariant().StartsWith("/sitecore/content"))
             {
                 var signalService = ServiceLocator.ServiceProvider.GetService(typeof(ISignalRService)) as ISignalRService;
-                signalService.Signal<NotificationHub>(new Notification() { ItemName = item.Name, ItemID = item.ID.Guid.ToString("N"), UserName = item.Statistics.UpdatedBy, ItemPath = item.Paths.FullPath });
+                signalService.Signal(new Notification() { ItemName = item.Name, ItemID = item.ID.Guid.ToString("N"), UserName = item.Statistics.UpdatedBy, ItemPath = item.Paths.FullPath });
             }
         }
     }

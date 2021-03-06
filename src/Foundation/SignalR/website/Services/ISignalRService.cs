@@ -10,6 +10,6 @@ namespace RealtimeNotifier.Foundation.SignalR.Services
 {
     public interface ISignalRService
     {
-        void Signal<THub>(BaseModel tModel) where THub : IHub;
+        void Signal(BaseModel tModel);
     }
 }
