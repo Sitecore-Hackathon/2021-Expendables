@@ -124,11 +124,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\Foundation\RealtimeNotifier.Foundation.SignalR.config" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Scripts\jquery.signalR-2.4.1.js" />
     <Content Include="Scripts\jquery.signalR-2.4.1.min.js" />
     <Content Include="Scripts\notify.js" />
     <Content Include="Scripts\notify.min.js" />
+    <Content Include="styles\font-awesome.min.css" />
     <Content Include="styles\signalr.css" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\connect-signalR.js" />
