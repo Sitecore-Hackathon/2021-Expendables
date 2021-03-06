@@ -10,13 +10,10 @@ using System.Web;
 
 namespace RealtimeNotifier.Feature.ItemActivities.Events
 {
-    /// <summary>
-    /// Class that handle to send push notification when item is saved by the user.
-    /// </summary>
-    public class ItemSavedNotification
+    public class ItemCreatedNotification
     {
         private ISignalRService signalRService;
-        public ItemSavedNotification(ISignalRService signalRService)
+        public ItemCreatedNotification(ISignalRService signalRService)
         {
             this.signalRService = signalRService;
         }
@@ -25,8 +22,8 @@ namespace RealtimeNotifier.Feature.ItemActivities.Events
         {
             Sitecore.Data.Items.Item item = Event.ExtractParameter<Sitecore.Data.Items.Item>(args, 0);
             var itemChanges = Event.ExtractParameter<Sitecore.Data.Items.ItemChanges>(args, 1);
-            var isRenamed = itemChanges.Properties.ContainsKey("name");
-            if (item.Paths.FullPath.ToLowerInvariant().StartsWith("/sitecore/content") && signalRService != null && item.Statistics.Created != item.Statistics.Updated && !isRenamed)
+            var hasWorkFlowField = itemChanges.FieldChanges.Cast<FieldChange>().Any(f => f.FieldID == Sitecore.FieldIDs.Workflow);
+            if (item.Paths.FullPath.ToLowerInvariant().StartsWith("/sitecore/content") && signalRService != null && item.Statistics.Created == item.Statistics.Updated && !hasWorkFlowField)
             {
                 signalRService.ItemActivitySignal(new ItemModel()
                 {
@@ -35,10 +32,10 @@ namespace RealtimeNotifier.Feature.ItemActivities.Events
                     UserName = item.Statistics.UpdatedBy,
                     UserFullName = Sitecore.Context.User.Profile.FullName,
                     ItemPath = item.Paths.FullPath,
-                    Message = $"{item.Name} has been updated.",
+                    Message = $"{item.Name} has been created.",
                     DateTime = DateTime.Now.ToString()
                 });
-                Log.Info($"ItemSavedNotification.OnItemSaved: Triggered realtime notification for {item.ID}", this);
+                Log.Info($"ItemCreatedNotification.OnItemSaved: Triggered realtime notification for {item.ID}", this);
             }
         }
     }
