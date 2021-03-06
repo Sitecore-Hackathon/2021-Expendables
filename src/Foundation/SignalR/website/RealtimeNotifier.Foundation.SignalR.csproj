@@ -126,7 +126,9 @@
     <Content Include="App_Config\Include\Foundation\RealtimeNotifier.Foundation.SignalR.config" />
     <Content Include="Scripts\jquery.signalR-2.4.1.js" />
     <Content Include="Scripts\jquery.signalR-2.4.1.min.js" />
+    <Content Include="Scripts\notify.js" />
     <Content Include="Scripts\notify.min.js" />
+    <Content Include="styles\signalr.css" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\connect-signalR.js" />
@@ -143,6 +145,7 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="NotificationHub.cs" />
     <Compile Include="Pipelines\OwinInitialize\InitializeSignalR.cs" />
+    <Compile Include="Pipelines\RenderContentEditor\ContentEditorOpened.cs" />
     <Compile Include="Pipelines\RenderContentEditor\RegisterSignalRScripts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ISignalRService.cs" />
