@@ -7,19 +7,36 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.UI;
+using System.Xml;
 
 namespace RealtimeNotifier.Foundation.SignalR.Pipelines.RenderContentEditor
 {
+    public class Resource
+    {
+        public String Path { get; set; }
+
+        public int Order { get; set; }
+    }
     public class RegisterSignalRResources
     {
         private const string JavascriptTag = "<script src=\"{0}\"></script>";
         private const string LinkTag = "<link rel=\"stylesheet\" href=\"{0}\" />";
 
-        protected IList<string> Scripts { get; } = new List<string>();
+        protected IList<Resource> Scripts { get; } = new List<Resource>();
 
         protected IList<string> Styles { get; } = new List<string>();
 
-        public void AddScriptResource(string resource) => this.Scripts.Add(resource);
+        public void AddScriptResource(XmlNode configNode)
+        {
+            if (configNode.Attributes == null)
+                return;
+            var resource = new Resource()
+            {
+                Path = configNode.Attributes["path"].Value,
+                Order = int.Parse(configNode.Attributes["order"].Value)
+            };
+            this.Scripts.Add(resource);
+        }
 
         public void AddStyleResource(string resource) => this.Styles.Add(resource);
 
@@ -49,9 +66,9 @@ namespace RealtimeNotifier.Foundation.SignalR.Pipelines.RenderContentEditor
             {
                 Sitecore.Diagnostics.Log.Error($"{this} {ex.Message}", ex, this);
             }
-            foreach(string script in this.Scripts)
+            foreach(Resource resource in this.Scripts.OrderBy(r => r.Order))
             {
-                handler.Header.Controls.Add((Control)new LiteralControl(JavascriptTag.FormatWith(script)));
+                handler.Header.Controls.Add((Control)new LiteralControl(JavascriptTag.FormatWith(resource.Path)));
             }
             foreach (string style in this.Styles)
             {
