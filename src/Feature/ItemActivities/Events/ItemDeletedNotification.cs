@@ -1,13 +1,10 @@
-﻿using RealtimeNotifier.Feature.ItemActivities.Models;
+﻿using System;
+using RealtimeNotifier.Feature.ItemActivities.Models;
 using RealtimeNotifier.Foundation.SignalR.Services;
 using Sitecore.Diagnostics;
 using Sitecore.Events;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace RealtimeNotifier.Feature.ItemActivities
+namespace RealtimeNotifier.Feature.ItemActivities.Events
 {
     /// <summary>
     /// Class that handle to send push notification when item is saved by the user.
@@ -22,6 +19,7 @@ namespace RealtimeNotifier.Feature.ItemActivities
 
         protected void OnItemDeleted(object sender, EventArgs args)
         {
+            //Taking the item from Arguments
             Sitecore.Data.Items.Item item = Event.ExtractParameter<Sitecore.Data.Items.Item>(args, 0);
             if (signalRService != null)
             {
@@ -35,7 +33,7 @@ namespace RealtimeNotifier.Feature.ItemActivities
                     Message = $"{item.Name} has been deleted.",
                     DateTime = DateTime.Now.ToString()
                 });
-                Log.Info($"ItemSavedNotification.OnItemDeleted: Triggered realtime notification for {item.ID}", this);
+                Log.Debug($"ItemSavedNotification.OnItemDeleted: Triggered realtime notification for {item.ID}", this);
             }
         }
     }

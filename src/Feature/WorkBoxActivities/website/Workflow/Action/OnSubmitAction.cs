@@ -18,7 +18,7 @@ namespace RealtimeNotifier.Feature.WorkBoxActivities.Workflow.Action
                 signalService.WorkboxSignal(
                     new SubmitActivityNotification()
                     {
-                        Message = $"submitted the item {dataItem.Paths.FullPath} in Workflow.",
+                        Message = $"Submitted the item {dataItem.Name} in Workflow.",
                         UserName = Sitecore.Context.User.Profile.UserName,
                         UserFullName = Sitecore.Context.User.Profile.FullName,
                         NotificationType = NotificationType.WorkflowSaved,

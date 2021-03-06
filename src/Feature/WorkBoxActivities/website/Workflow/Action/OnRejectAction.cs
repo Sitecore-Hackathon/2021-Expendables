@@ -18,7 +18,7 @@ namespace RealtimeNotifier.Feature.WorkBoxActivities.Workflow.Action
                 signalService.WorkboxSignal(
                     new PublishActivityNotification()
                     {
-                        Message = $"rejected the item {dataItem.Paths.FullPath} which was in workflow.",
+                        Message = $"Rejected the item {dataItem.Name} which was in workflow.",
                         UserName = Sitecore.Context.User.Profile.UserName,
                         UserFullName = Sitecore.Context.User.Profile.FullName,
                         NotificationType = NotificationType.WorkflowRejected,
