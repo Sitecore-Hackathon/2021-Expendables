@@ -12,14 +12,26 @@ You can find a very good reference to Github flavoured markdown reference in [th
 ⟹ Expendables
 
 ## Category
-⟹ Write the name of the selected category
+⟹ The best enhancement to the Sitecore Admin (XP) for Content Editors & Marketers210.
 
 ## Description
-⟹ Write a clear description of your hackathon entry.  
+⟹ Realtime Notifier uses SignalR to send push notifications to all active Sitecore "Content Editor" users to update them about the latest changes that other users might have done.  
 
-  - Module Purpose
-  - What problem was solved (if any)
-    - How does this module solve it
+  - Module Purpose: The purpose of this module to keep content author up to the date and informed about what is happening on the items.
+  - What problem was solved (if any): Currently content author doesn't get any real time notification about what is going on to the items and if there are some items that need their attention to either approve or reject those changes without going into Workbox.
+    - How does this module solve it: Content Author will get the real time notification in content editor itself where he spend most of the time and he can get all update on other items without moving aways from his its own content editor page. 
+
+Here, as a part of this solution, we considered the following content author operations for processing the push notifications.
+
+Item Events
+Item Saved: The notification will be shown to the Notification center and if the parent root is expanded, the item that was updated by another user will also have an indication in its Gutter area.
+Item Renamed: 
+Item Deleted: 
+
+Workflow
+Item moved to a workflow stage
+Item approved for publishing
+Item rejected for publishing
 
 _You can alternately paste a [link here](#docs) to a document within this repo containing the description._
 
