@@ -144,6 +144,7 @@
     <Compile Include="Configurator\RegisterDependencies.cs" />
     <Compile Include="Events\ItemSavedNotification.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\UserActivityNotification.cs" />
     <Compile Include="NotificationHub.cs" />
     <Compile Include="Pipelines\OwinInitialize\InitializeSignalR.cs" />
     <Compile Include="Pipelines\RenderContentEditor\ContentEditorOpened.cs" />

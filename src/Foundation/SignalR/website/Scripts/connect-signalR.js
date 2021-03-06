@@ -14,12 +14,10 @@
         $('.sc-globalHeader .sc-accountInformation').click(function () {
             $('#notificationsBar').css('width', '350px');
             $('#ContentEditorForm').css('marginLeft', '350px');
-            //$('#ContentEditorForm').css('padding', '16px');
         });
         $(document).on('click', '#notificationsBar .closebtn', function () {
             $('#notificationsBar').css('width', '0');
             $('#ContentEditorForm').css('marginLeft', '0');
-            //$('#ContentEditorForm').css('padding', '0');
         });
         $.connection.hub.start().done(function () {
             console.log('SignalR connection done');

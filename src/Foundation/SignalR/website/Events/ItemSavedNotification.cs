@@ -15,17 +15,12 @@ namespace RealtimeNotifier.Foundation.SignalR.Events
     {
         protected void OnItemSaved(object sender, EventArgs args)
         {
-            Sitecore.Data.Items.Item item = Event.ExtractParameter<Sitecore.Data.Items.Item>(args, 0);
-            if (item.Paths.FullPath.ToLowerInvariant().StartsWith("/sitecore/content"))
-            {
-                var signalService = ServiceLocator.ServiceProvider.GetService(typeof(ISignalRService)) as ISignalRService;
-                signalService.Signal(new Notification() { ItemName = item.Name, ItemID = item.ID.Guid.ToString("N"), UserName = item.Statistics.UpdatedBy, ItemPath = item.Paths.FullPath });
-            }
+            //Sitecore.Data.Items.Item item = Event.ExtractParameter<Sitecore.Data.Items.Item>(args, 0);
+            //if (item.Paths.FullPath.ToLowerInvariant().StartsWith("/sitecore/content"))
+            //{
+            //    var signalService = ServiceLocator.ServiceProvider.GetService(typeof(ISignalRService)) as ISignalRService;
+            //    signalService.Signal(new Notification() { ItemName = item.Name, ItemID = item.ID.Guid.ToString("N"), UserName = item.Statistics.UpdatedBy, ItemPath = item.Paths.FullPath });
+            //}
         }
-    }
-
-    public class Notification :BaseModel
-    {
-        
     }
 }
