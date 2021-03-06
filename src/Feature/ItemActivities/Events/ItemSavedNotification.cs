@@ -27,6 +27,7 @@ namespace RealtimeNotifier.Feature.ItemActivities
                     ItemName = item.Name,
                     ItemID = item.ID.Guid.ToString("N"),
                     UserName = item.Statistics.UpdatedBy,
+                    UserFullName = Sitecore.Context.User.Profile.FullName,
                     ItemPath = item.Paths.FullPath,
                     Message = $"{item.Name} has been udpated.",
                     DateTime = DateTime.Now.ToString()
