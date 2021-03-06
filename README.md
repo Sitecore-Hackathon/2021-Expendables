@@ -61,6 +61,9 @@ Set `PublishUrl` in "PublishProfiles" to target your Sitecore instance
 4. Try updating Sitecore items from Content Tree
 5. All users should be able to get real time notifications
 
+
+![Realtime Notification](docs/images/gutter-notification.png?raw=true "Realtime Notification")
+
 ![Realtime Notification](docs/images/bell-notifications.png?raw=true "Realtime Notification")
 
 
