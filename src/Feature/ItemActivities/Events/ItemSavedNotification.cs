@@ -1,4 +1,4 @@
-﻿using RealtimeNotifier.Feature.Gutter.Models;
+﻿using RealtimeNotifier.Feature.ItemActivities.Models;
 using RealtimeNotifier.Foundation.SignalR.Services;
 using Sitecore.Diagnostics;
 using Sitecore.Events;
@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace RealtimeNotifier.Feature.Gutter
+namespace RealtimeNotifier.Feature.ItemActivities
 {
     public class ItemSavedNotification
     {
