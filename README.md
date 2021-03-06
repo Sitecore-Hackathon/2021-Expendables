@@ -16,6 +16,7 @@ Realtime Notifier uses SignalR to send push notifications to all active Sitecore
 
   - Here, as a part of this solution, we considered the following content author operations for processing the push notifications. The notification will be shown to the Notification center and if the parent root is expanded, the item that was updated by another user will also have an indication in its Gutter area.
     - Item Events 
+		- Item Created
 		- Item Saved
 		- Item Renamed
 		- Item Deleted
@@ -77,8 +78,9 @@ Set `PublishUrl` in "PublishProfiles" to target your Sitecore instance
 Due to 24hours time constraint we were not able to include many other intutive features but we would definitely like to keep on adding those features to make it a great asset to the Content Author. These are few, we can plan in short term goal.
 
 - Message Content managment through Sitecore
+- Notification settings through Sitecore
 - Persistent Notification
-- Live Chat with 2 or more Authors
+- Live Chat between Authors
 
 ![Hackathon Logo](docs/images/hackathon.png?raw=true "Hackathon Logo")
 
