@@ -3,10 +3,8 @@ using RealtimeNotifier.Foundation.SignalR.Services;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.Events;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System;
 
 namespace RealtimeNotifier.Feature.ItemActivities.Events
 {
@@ -20,12 +18,12 @@ namespace RealtimeNotifier.Feature.ItemActivities.Events
 
         protected void OnItemSaved(object sender, EventArgs args)
         {
-            Sitecore.Data.Items.Item item = Event.ExtractParameter<Sitecore.Data.Items.Item>(args, 0);
-            //We were getting double notifications when the item is created where Workflow has been set to the
-            //item template and to avoid the second notification, here we implemented a check for workflow
-            //field in the FieldChange list.
-            var itemChanges = Event.ExtractParameter<Sitecore.Data.Items.ItemChanges>(args, 1);
+            //Taking the item from Arguments
+            Item item = Event.ExtractParameter<Item>(args, 0);
+            var itemChanges = Event.ExtractParameter<ItemChanges>(args, 1);
+            //Boolean created to avoid Item Save Notification when the Item is Created and Workflow is assigned while creation
             var hasWorkFlowField = itemChanges.FieldChanges.Cast<FieldChange>().Any(f => f.FieldID == Sitecore.FieldIDs.Workflow);
+            //When Created and Updated date are same, means the Item got created!
             if (item.Paths.FullPath.ToLowerInvariant().StartsWith("/sitecore/content") && signalRService != null && item.Statistics.Created == item.Statistics.Updated && !hasWorkFlowField)
             {
                 signalRService.ItemActivitySignal(new ItemModel()
@@ -38,7 +36,7 @@ namespace RealtimeNotifier.Feature.ItemActivities.Events
                     Message = $"{item.Name} has been created.",
                     DateTime = DateTime.Now.ToString()
                 });
-                Log.Info($"ItemCreatedNotification.OnItemSaved: Triggered realtime notification for {item.ID}", this);
+                Log.Debug($"ItemCreatedNotification.OnItemSaved: Triggered realtime notification for {item.ID}", this);
             }
         }
     }
