@@ -101,9 +101,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pipelines\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\Foundation\SignalR\website\RealtimeNotifier.Foundation.SignalR.csproj">
       <Project>{8d7bcc13-f02c-4a88-ba90-7e1603897fa8}</Project>
