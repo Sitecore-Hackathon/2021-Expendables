@@ -75,7 +75,7 @@ Set `PublishUrl` in "PublishProfiles" to target your Sitecore instance
 ![Realtime Notification](docs/images/bell-notifications.png?raw=true "Realtime Notification")
 
 ## Further Enchancement
-Due to 24hours time constraint we were not able to include many other intutive features but we would definitely like to keep on adding those features to make it a great asset to the Content Author. These are few, we can plan in short term goal.
+Due to 24hours time constraint we were not able to include many other intutive features but we would definitely like to keep on adding those features to make it a great asset to the Content Author. These are few, we can plan as short term goal.
 
 - Message Content managment through Sitecore
 - Notification settings through Sitecore
