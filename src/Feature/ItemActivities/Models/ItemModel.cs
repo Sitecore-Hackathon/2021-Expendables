@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 
 
-namespace RealtimeNotifier.Feature.Gutter.Models
+namespace RealtimeNotifier.Feature.ItemActivities.Models
 {
     public class ItemModel : BaseModel
     {

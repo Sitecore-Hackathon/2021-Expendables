@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RealtimeNotifier.Feature.Gutter</RootNamespace>
-    <AssemblyName>RealtimeNotifier.Feature.Gutter</AssemblyName>
+    <RootNamespace>RealtimeNotifier.Feature.ItemSaveNotifier</RootNamespace>
+    <AssemblyName>RealtimeNotifier.Feature.ItemSaveNotifier</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -82,12 +82,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Feature\RealtimeNotifier.Feature.Gutteer.config" />
+    <Content Include="App_Config\Include\Feature\RealtimeNotifier.Feature.ItemSaveNotifier.config" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\ItemSavedNotification.cs" />
     <Compile Include="Gutter\NotificationGutter.cs" />
+    <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
