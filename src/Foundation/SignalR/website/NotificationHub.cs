@@ -9,8 +9,9 @@ namespace RealtimeNotifier.Foundation.SignalR
 {
     public class NotificationHub : Hub
     {
-        public void Notify(Notification notification)
+        public void Send(Notification notification)
         {
+            notification.DateTime = DateTime.Now.ToString();
             Clients.All.notify(notification);
         }
     }
