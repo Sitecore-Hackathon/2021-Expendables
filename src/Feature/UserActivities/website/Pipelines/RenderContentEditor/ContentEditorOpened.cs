@@ -5,7 +5,7 @@ using Sitecore.DependencyInjection;
 using Sitecore.Shell.Applications.ContentEditor.Pipelines.RenderContentEditor;
 using System;
 
-namespace RealtimeNotifier.Feature.ContentEditorOpened.Pipelines.RenderContentEditor
+namespace RealtimeNotifier.Feature.UserActivities.Pipelines.RenderContentEditor
 {
     public class ContentEditorOpened
     {
