@@ -88,8 +88,11 @@
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\ItemRenamedNotification.cs" />
+    <Compile Include="Events\ItemDeletedNotification.cs" />
     <Compile Include="Events\ItemSavedNotification.cs" />
     <Compile Include="Models\ItemModel.cs" />
+    <Compile Include="Pipelines\CustomPublishProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -101,9 +104,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pipelines\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\Foundation\SignalR\website\RealtimeNotifier.Foundation.SignalR.csproj">
       <Project>{8d7bcc13-f02c-4a88-ba90-7e1603897fa8}</Project>
