@@ -17,7 +17,12 @@ namespace RealtimeNotifier.Feature.UserActivities.Pipelines.RenderContentEditor
                 return;
             }
             var signalService = ServiceLocator.ServiceProvider.GetService(typeof(ISignalRService)) as ISignalRService;
-            signalService.Signal(new UserActivityNotification() { Message = $"Opened the content editor.", UserName = Sitecore.Context.User.Profile.UserName, NotificationType = NotificationType.ContentEditorOpened, DateTime = DateTime.Now.ToString() });
+            if (signalService != null)
+                signalService.Signal(new UserActivityNotification()
+                {
+                    Message = $"Opened the content editor.", UserName = Sitecore.Context.User.Profile.UserName,
+                    NotificationType = NotificationType.ContentEditorOpened, DateTime = DateTime.Now.ToString()
+                });
         }
     }
 }
