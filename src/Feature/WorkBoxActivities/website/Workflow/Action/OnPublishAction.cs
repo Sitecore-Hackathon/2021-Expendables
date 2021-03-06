@@ -15,7 +15,7 @@ namespace RealtimeNotifier.Feature.WorkBoxActivities.Workflow.Action
             Item dataItem = args.DataItem;
             var signalService = ServiceLocator.ServiceProvider.GetService(typeof(ISignalRService)) as ISignalRService;
             if (signalService != null)
-                signalService.Signal(
+                signalService.WorkboxSignal(
                     new PublishActivityNotification()
                     {
                         Message = $"approved the item {dataItem.Paths.FullPath} which was in workflow.",

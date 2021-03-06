@@ -15,14 +15,13 @@
     float: left !important;
     position: relative;
     padding: 13px;
-    margin-top: -12px;
-    margin-right: 12px;
+    margin-top: -9px;
 }
     .signalr-dropdown .dropdown-menu {
         display: none;
         position: absolute;
-        top: 100%;
-        right: 0;
+        bottom: 100%;
+        left: 0;
         z-index: 1000;
         min-width: 300px;
         margin: 2px 0 0;

@@ -15,7 +15,7 @@ namespace RealtimeNotifier.Feature.WorkBoxActivities.Workflow.Action
             Item dataItem = args.DataItem;
             var signalService = ServiceLocator.ServiceProvider.GetService(typeof(ISignalRService)) as ISignalRService;
             if (signalService != null)
-                signalService.Signal(
+                signalService.WorkboxSignal(
                     new SubmitActivityNotification()
                     {
                         Message = $"submitted the item {dataItem.Paths.FullPath} in Workflow.",

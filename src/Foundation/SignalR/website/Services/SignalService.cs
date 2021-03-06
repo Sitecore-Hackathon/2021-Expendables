@@ -15,5 +15,17 @@ namespace RealtimeNotifier.Foundation.SignalR.Services
             var clients = GlobalHost.ConnectionManager.GetHubContext<NotificationHub>().Clients;
             clients.All.notify(tModel);
         }
+
+        public void WorkboxSignal(BaseModel tModel)
+        {
+            var clients = GlobalHost.ConnectionManager.GetHubContext<NotificationHub>().Clients;
+            clients.All.workboxnotify(tModel);
+        }
+
+        public void ItemActivitySignal(BaseModel tModel)
+        {
+            var clients = GlobalHost.ConnectionManager.GetHubContext<NotificationHub>().Clients;
+            clients.All.itemActivityNotify(tModel);
+        }
     }
 }
