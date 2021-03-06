@@ -51,7 +51,7 @@ Realtime Notifier uses SignalR to send push notifications to all active Sitecore
 1. Open Visual Studio 2019 with Administrator rights`
 2. Set `PublishUrl` in "PublishProfiles" to target your Sitecore instance
 3. Publish all 4 projects to targetted Sitecore instance
-4. Install provided Sitecore package "Notify-items-for-WF.zip" to add required items [Notify-items-for-WF.zip] from the repository root
+4. Install provided Sitecore package "Notify-items-for-WF.zip" to add required items [Sitecore Package](Notify-items-for-WF.zip) from the repository root
 
 
 ### Configuration
