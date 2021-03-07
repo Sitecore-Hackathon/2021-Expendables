@@ -38,7 +38,7 @@
 2. Login to Sitecore having an administrator role.
 3. From Sitecore Launchpad open Desktop.
 4. Navigate to Start Menu -> Development Tools -> Installation Wizard.
-5. Download Sitecore Package [RealtimeNotifier](https://github.com/Sitecore-Hackathon/2021-Expendables/blob/main/package/SCHackathon2021-Team-Expendables-1.0.zip)
+5. Download Sitecore Package [RealtimeNotifier](https://github.com/Sitecore-Hackathon/2021-Expendables/blob/main/blob/main/package/SCHackathon2021-Team-Expendables-1.0.zip)
 6. Using upload package upload it to sitecore.
 7. Once upload is complete click next.
 8. Click on Install button of "Install a Package" dialog.
